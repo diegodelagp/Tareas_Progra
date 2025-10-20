@@ -1,0 +1,107 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNdbaYEUNzLQKcm8VT5gNnI",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/diegodelagp/Tareas_Progra/blob/main/Tarea_3\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "1J7bs_0bLEZO",
+        "outputId": "15dfd6e0-32ff-4922-9c99-a67ea38ae0ec",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Que gusta pedir 1 Pizza ($10), 2 Hamburguesa ($8), 3 Ensalada ($7) 4 salir: 4\n",
+            "tu total es 0\n"
+          ]
+        }
+      ],
+      "source": [
+        "#RETO\n",
+        "pedido_total = 0\n",
+        "pedido = 0 #ambas variables inizializan en 0\n",
+        "while pedido != \"4\":\n",
+        "  pedido = input((\"Que gusta pedir 1 Pizza ($10), 2 Hamburguesa ($8), 3 Ensalada ($7) 4 salir: \"))#preunta al usuario sobre lo que desea ordenar\n",
+        "  match pedido: #dependiendo del numero puesto el sistema añade el valor de la orden al pedido total\n",
+        "    case \"1\":\n",
+        "      pedido_total = pedido_total + 10\n",
+        "      print(f\"{pedido_total}\")\n",
+        "    case \"2\":\n",
+        "      pedido_total = pedido_total + 8\n",
+        "      print(f\"{pedido_total}\")\n",
+        "    case \"3\":\n",
+        "      pedido_total = pedido_total + 7\n",
+        "      print(f\"{pedido_total}\")\n",
+        "    case \"4\": #si el usuario seleciona 4 se acaba el pedido y lanza el total\n",
+        "      print(f\"tu total es {pedido_total}\")\n",
+        "    case _: #si el usuario pone cualquier otra cosa manda error\n",
+        "      print(\"VALOR NO VALIDO\")\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#RETO 2\n",
+        "T_en_pantalla = [2,3,4.5,1,2,5.6,3] #Lista de tiempo de cada dia de la semana\n",
+        "def calc(T_en_pantalla):\n",
+        "  if len(T_en_pantalla) == 0: #Si no hay datos avienta un 0\n",
+        "    print(\"0\")\n",
+        "  else:\n",
+        "    Total = sum(T_en_pantalla) #Suma totos los valores\n",
+        "    Hor = Total/len(T_en_pantalla) #Los promedia a horas\n",
+        "    print(f\"Tu promedio diario en horas es: {Hor:.2f}\")\n",
+        "    Min = (lambda Hor,x: Hor * x)(Hor,60) #Los promedia a minutos\n",
+        "    print(f\"Tu promedio diario en horas es_ {Min:.2f}\")\n",
+        "calc(T_en_pantalla)"
+      ],
+      "metadata": {
+        "id": "HTtcH9InLIno",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "74c865d4-3e48-403b-9fc4-d078172d4f23"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Tu promedio diario en horas es: 3.01\n",
+            "Tu promedio diario en horas es_ 180.86\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
