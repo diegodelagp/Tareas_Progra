@@ -1,0 +1,157 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNIW6nuFE6iv+k3ARLy0vv3",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/diegodelagp/Tareas_Progra/blob/main/Tarea_2\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "kI2AVim3wpSE",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "407d7628-915f-4b4b-8fd2-70d0442aa805"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Opcion 1: pies a cm, Opcion 2: pulgadas a cm, Opcion 3 yardas a cm\n",
+            "Seleciones que gustaria hacer: 0.2\n",
+            "Escriba el numero a transformar: 2\n",
+            "VALOR EQUIVOCADO\n"
+          ]
+        }
+      ],
+      "source": [
+        "#convertidor a cm\n",
+        "import time\n",
+        "\n",
+        "def patas(): #Funcion que convierte pies a centimetros\n",
+        "  Pies = Med * 32\n",
+        "  print(Pies,\"Cm\")\n",
+        "def pulgadas(): #Funcion que convierte pulgadas a centimetros\n",
+        "  Pulg = Med * 2.54\n",
+        "  print(Pulg, \"Cm\")\n",
+        "def yardas(): #Funcion que convierte yardas a centimetros\n",
+        "  Yar = Med * 91.44\n",
+        "  print(Yar, \"cm\")\n",
+        "\n",
+        "print(\"Opcion 1: pies a cm, Opcion 2: pulgadas a cm, Opcion 3 yardas a cm\")\n",
+        "time.sleep(2) #Puse el time .sleep para q se viera más pro :P, ademas le da tiempo al usuario a leer\n",
+        "Valor = float(input(\"Seleciones que gustaria hacer: \")) #Permite al usuario elegir q hacer\n",
+        "Med = float(input(\"Escriba el numero a transformar: \")) #pide al usuario los cm\n",
+        "op = Valor\n",
+        "\n",
+        "if Med > 0: #verifica que el valor no sea 0 de lo contrario le manda un mensaje de error y dependiendo del valor dado ejecuta la funcion\n",
+        "  if op == 1:\n",
+        "    patas()\n",
+        "  elif op == 2:\n",
+        "    pulgadas()\n",
+        "  elif op == 3:\n",
+        "    yardas()\n",
+        "  else:\n",
+        "    print(\"VALOR EQUIVOCADO\")\n",
+        "else:\n",
+        "  print(\"VALOR EQUIVOCADO\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Cilindro área volumen\n",
+        "#2πrh + 2πr²\n",
+        "#πr²h\n",
+        "#Formulas a usar\n",
+        "import math\n",
+        "Alt = float(input(\"Escriba el Área del cilindro: \")) #Ambos inputs preguntan por area y radio\n",
+        "rad = float(input(\"Escriba el Radio del cilindro: \"))\n",
+        "pi = math.pi\n",
+        "def area_cilindro(): #para asi despues poder calcular el area del cilindro usando sus respectivas formulas\n",
+        "  Area = (2 * pi*(rad**2)* Alt) + 2 * pi*(rad**2)\n",
+        "  print(f\"Area= {Area:.1f} \")\n",
+        "def volumen_cilindro(): #y tambien su volumen\n",
+        "  Volumen = pi*(rad**2)* Alt\n",
+        "  print(f\"Radio= {Volumen:.1f}\")\n",
+        "area_cilindro()\n",
+        "volumen_cilindro()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "1s892zcr39j4",
+        "outputId": "3c80b0c6-a6c0-4edb-825b-ecb80534f3f3"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Escriba el Área del cilindro: 2\n",
+            "Escriba el Radio del cilindro: 2\n",
+            "Area=, 75.4 \n",
+            "Radio=, 25.1\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def es_bisiesto(anio):\n",
+        "  if anio % 4 == 0 and anio % 100 != 0 or anio % 400 == 0: #Verifica que si el año es bisiesto mediante el operador % que revisa que si un numero se divide y no queda residuos es año bisiesto\n",
+        "    print(\"true\") #tambein verifica si es divisible entre 400\n",
+        "  else:\n",
+        "    print(\"False\")\n",
+        "\n",
+        "anio = int(input(\"¿Que año desea saber si es bisiesto?: \"))\n",
+        "es_bisiesto(anio)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "uMKUIEwk7LRU",
+        "outputId": "0d06f26c-7ec2-4ba1-e9fc-59884b01f97e"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "¿Que año desea saber si es bisiesto?: 2029\n",
+            "False\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
