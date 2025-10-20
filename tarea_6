@@ -1,0 +1,208 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMSrnvjjUXlG+s8TFtQqemp",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/diegodelagp/Tareas_Progra/blob/main/tarea_6\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "DWADDKS_gnCT",
+        "outputId": "375d744a-89e7-41b7-e23a-6c7d268a2879"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "--- Calculadora del Determinante de una matriz 2x2 ---\n",
+            "Ingrese los valores para la primera fila (2 valores, separados por espacios):\n",
+            "2 3\n",
+            "Ingrese los valores para la segunda fila (2 valores, separados por espacios):\n",
+            "4 5\n",
+            "\n",
+            "El determinante de la matriz [[2, 3], [4, 5]] es: -2\n"
+          ]
+        }
+      ],
+      "source": [
+        "#Exercise 1:\n",
+        "import sys\n",
+        "\n",
+        "def calcular_determinante(matriz: list[list[int]]) -> int:\n",
+        "    producto_ad = matriz[0][0] * matriz[1][1] #Multiplica el valor 1 de la primer lista por el valor 2 de la segunda lista\n",
+        "    producto_cb = matriz[1][0] * matriz[0][1] #Multiplica el valor 2 de la primer lista por el valor 1 de la segunda lista\n",
+        "\n",
+        "    return producto_ad - producto_cb #te devuelve la resta de ambos valores\n",
+        "\n",
+        "def construir_matriz() -> list[list[int]] | None:\n",
+        "    print(\"Ingrese los valores para la primera fila (2 valores, separados por espacios):\")\n",
+        "    fila1 = [int(val) for val in input().split()] #añade ambos valores a la lista 1\n",
+        "\n",
+        "    print(\"Ingrese los valores para la segunda fila (2 valores, separados por espacios):\")\n",
+        "    fila2 = [int(val) for val in input().split()] #añade ambos valores a la lista 2\n",
+        "\n",
+        "    if len(fila1) != 2 or len(fila2) != 2: #verifica que ambos valores sean de 2\n",
+        "        print(\"Matrix is not a 2x2 matrix.\")\n",
+        "        return None\n",
+        "\n",
+        "    return [fila1, fila2]\n",
+        "\n",
+        "def principal(): #le da formato al codigo\n",
+        "    print(\"--- Calculadora del Determinante de una matriz 2x2 ---\")\n",
+        "\n",
+        "    matriz = construir_matriz()\n",
+        "\n",
+        "    if matriz is not None:\n",
+        "        determinante = calcular_determinante(matriz)\n",
+        "\n",
+        "        print(f\"\\nEl determinante de la matriz {matriz} es: {determinante}\")\n",
+        "    else:\n",
+        "        pass\n",
+        "\n",
+        "if __name__ == \"__main__\":\n",
+        "    principal()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Exercise 2:\n",
+        "\n",
+        "import sys\n",
+        "\n",
+        "def es_primo(n: int) -> bool:\n",
+        "    if n <= 1: #si es menor o igual a 1 nos devilce el valor falso\n",
+        "        return False\n",
+        "    if n <= 3: #si es menor o igual a 3 nos devilce el valor True\n",
+        "        return True\n",
+        "    if n % 2 == 0 or n % 3 == 0:  #si es divisible entre 2 o divisible entre 3 nos devulve el valor False\n",
+        "        return False\n",
+        "\n",
+        "    i = 5\n",
+        "    while i * i <= n: #el codigo se ejecutara mientras la condicion sea cierta\n",
+        "        if n % i == 0 or n % (i + 2) == 0: # si el valor de n es divisible entre i o n es divisible entre i+2 nos devulve un valor falso\n",
+        "            return False\n",
+        "        i += 6\n",
+        "    return True #en cuanto acaba el bucle si no hubo inconvenientes nos regresa verdadero\n",
+        "\n",
+        "def contar_primos_por_fila(matriz: list[list[int]]) -> list[int]:\n",
+        "    conteo_primos = []\n",
+        "\n",
+        "    for fila in matriz:\n",
+        "        conteo_fila = 0\n",
+        "        for numero in fila:\n",
+        "            if es_primo(numero): #verifica si el valor es falso o verdadero\n",
+        "                conteo_fila += 1\n",
+        "\n",
+        "        conteo_primos.append(conteo_fila) #lo añade a la lista\n",
+        "\n",
+        "    return conteo_primos #nos devulve el valor de la lsita con todos sus numeros\n",
+        "\n",
+        "def principal():\n",
+        "    print(\">>> \", end=\"\")\n",
+        "    num_filas = int(input(\"Ingrese el número de filas de la matriz: \")) #Pide al usuario el numero de filas\n",
+        "\n",
+        "    print(\">>> \", end=\"\")\n",
+        "    num_columnas = int(input(\"Ingrese el número de columnas de la matriz: \")) #Pide al usuario el numero de columnas\n",
+        "\n",
+        "    if num_filas <= 0 or num_columnas <= 0:\n",
+        "        print(\"Error: El número de filas y columnas debe ser positivo.\") #verifica si son numeros positivos\n",
+        "        return\n",
+        "\n",
+        "    print(\"\\n--- Ingrese los datos de la matriz (un entero por línea) ---\")\n",
+        "    matriz = []\n",
+        "\n",
+        "    for i in range(num_filas): #pide los datos uno por uno\n",
+        "        fila = []\n",
+        "        print(f\"Fila {i+1}:\") #todo esto basado en el numero de renglones y filas dadas\n",
+        "        for j in range(num_columnas):\n",
+        "            print(\">>> \", end=\"\")\n",
+        "            valor = int(input()) #pide al valor para la lista\n",
+        "            fila.append(valor) #lo añade a la lista\n",
+        "        matriz.append(fila) #lo añade a la matriz\n",
+        "\n",
+        "    resultado = contar_primos_por_fila(matriz) #corre la func para obtener el reultado deseado\n",
+        "\n",
+        "    print(\"\\n--- Matriz Leída ---\")\n",
+        "    for fila in matriz:\n",
+        "        print(fila)\n",
+        "\n",
+        "    print(\"\\n--- Salida ---\")\n",
+        "    print(f\"Lista de cantidad de primos por fila: {resultado}\")\n",
+        "\n",
+        "if __name__ == \"__main__\":\n",
+        "    principal() #corre el programa"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "N_zyZLXvgvnu",
+        "outputId": "e2d4f9d7-db67-4ccc-c6e6-9aa691342b09"
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            ">>> Ingrese el número de filas de la matriz: 3\n",
+            ">>> Ingrese el número de columnas de la matriz: 4\n",
+            "\n",
+            "--- Ingrese los datos de la matriz (un entero por línea) ---\n",
+            "Fila 1:\n",
+            ">>> 1\n",
+            ">>> 2\n",
+            ">>> 3\n",
+            ">>> 4\n",
+            "Fila 2:\n",
+            ">>> 5\n",
+            ">>> 6\n",
+            ">>> 7\n",
+            ">>> 8\n",
+            "Fila 3:\n",
+            ">>> 9\n",
+            ">>> 1\n",
+            ">>> 2\n",
+            ">>> 3\n",
+            "\n",
+            "--- Matriz Leída ---\n",
+            "[1, 2, 3, 4]\n",
+            "[5, 6, 7, 8]\n",
+            "[9, 1, 2, 3]\n",
+            "\n",
+            "--- Salida ---\n",
+            "Lista de cantidad de primos por fila: [2, 2, 2]\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
