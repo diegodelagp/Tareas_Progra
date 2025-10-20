@@ -1,0 +1,149 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNM/zpZkq1plJ1VQV2FmyNS",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/diegodelagp/Tareas_Progra/blob/main/Tarea_1\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import math\n",
+        "\n",
+        "#DIagonal rectangulo\n",
+        "\n",
+        "Largo = float(input(\"Largo del rectangulo: \")) #Ambos input pregunta a el usuario los datos requeridos\n",
+        "Ancho = float(input(\"Ancho del rectangulo: \"))\n",
+        "\n",
+        "def diagonal(Largo, Ancho):\n",
+        "  # En esta funcion calculamos la diagonal con la funcion math.sqrt que es para obtener la raiz cuadrada\n",
+        "  Ans = math.sqrt(Largo**2 + Ancho**2)\n",
+        "  print(Ans)\n",
+        "\n",
+        "diagonal(Largo, Ancho)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "BcZS5Y0s-lEA",
+        "outputId": "b6b09dce-96fe-4595-c184-653ba79bbaf8"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Largo del rectangulo: 3\n",
+            "Ancho del rectangulo: 5\n",
+            "5.830951894845301\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import math\n",
+        "#FOrmula para calcular Ni(e^rt)\n",
+        "\n",
+        "Ni = float(input(\"Poblacion inicial: \"))\n",
+        "R = float(input(\"Tasa de crecimiento (0-1): \"))\n",
+        "T = float(input(\"Tiempo del experimento: \")) #Los input pide a el usuario los datos requeridos\n",
+        "E = math.e #Aqui asignamos el valor de euler a la variable E\n",
+        "\n",
+        "def calculo(Ni,R,T,E):\n",
+        "  if R == 1: #Dependiendo del numero que nos den en la tasa de cracimiento el sistema lo vera y seleccionara la opcion que corresponda\n",
+        "    H = R * T\n",
+        "    F = E ** H\n",
+        "    G = F * Ni\n",
+        "    print(F)\n",
+        "  elif R == 0:\n",
+        "    H = R * T\n",
+        "    F = E ** H\n",
+        "    G = F * Ni\n",
+        "    print(F)\n",
+        "  else:\n",
+        "    print(\"Error tiempo  no valida\")\n",
+        "\n",
+        "calculo(Ni,R,T,E)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "pMfesAT9Bo5z",
+        "outputId": "30ba9ebf-c57a-4961-a2ba-7840687989c8"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Poblacion inicial: 2\n",
+            "Tasa de crecimiento (0-1): 0.3\n",
+            "Tiempo del experimento: 2\n",
+            "Error tiempo  no valida\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Litros de pintura\n",
+        "\n",
+        "import math\n",
+        "\n",
+        "area = float(input(\"Area a pintuar: \")) #Pedimos al usuario los datos para asi despues calcular y darle al usuario los datos requeridos\n",
+        "litro = float(input(\"Litros a USar: \"))\n",
+        "\n",
+        "litros = math.ceil(area / litro)\n",
+        "\n",
+        "print(litros)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "i3SdCoKl7lcz",
+        "outputId": "a608cb9d-4c39-4cef-9b2e-b7cb58e3058b"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Area a pintuar: 5\n",
+            "Litros a USar: 2\n",
+            "3\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
