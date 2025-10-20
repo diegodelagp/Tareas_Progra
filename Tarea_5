@@ -1,0 +1,200 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyN2grpn1THZXqSGvf+O2CqD",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/diegodelagp/Tareas_Progra/blob/main/Tarea_5\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "JF1M7knNJ6q_",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "959ff520-b0af-4f01-ea54-096282269591"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Dame datos para hacer una matriz cuadrada\n",
+            "Introduce el número de filas: 2\n",
+            "Introduce el número de columnas: 2\n",
+            "Introduce el valor para la posición (0,0): 1\n",
+            "Introduce el valor para la posición (0,1): 2\n",
+            "Introduce el valor para la posición (1,0): 3\n",
+            "Introduce el valor para la posición (1,1): 4\n",
+            "Este es el vector diagnal ['1', '4']\n",
+            "Esta es tu Matriz cuadrada: [['1', '2'], ['3', '4']] :)\n"
+          ]
+        }
+      ],
+      "source": [
+        "#Ejercicio 1:\n",
+        "def vector_d(matriz):\n",
+        "  vector_diagonal = []\n",
+        "  for i in range(len(matriz)):\n",
+        "      vector_diagonal.append(matriz[i][i]) #Pasa solo por los valores que esten en diagonal en el vector es decir el [0][0] segido del [1][1] etc.\n",
+        "  print(f\"Este es el vector diagnal {vector_diagonal}\")\n",
+        "\n",
+        "def leer(f,c):\n",
+        "  matriz = []\n",
+        "  if c == f: #Verifica que sea una matriz cuadrada\n",
+        "    for i in range(f):\n",
+        "        fila = []\n",
+        "        for j in range(c):\n",
+        "            valor = input(f\"Introduce el valor para la posición ({i},{j}): \") #pide al usuario el valor para la poscicion de la matriz\n",
+        "            fila.append(valor) #añade ese valor a la lista\n",
+        "        matriz.append(fila) #añade esa lista a la matriz\n",
+        "    vector_d(matriz) #ejecuta la func\n",
+        "    print(f\"Esta es tu Matriz cuadrada: {matriz} :)\")\n",
+        "  else:\n",
+        "    print(\"Para que sea cuadrada tanto filas como columnas deben tener el mismo valor\") #Corrije al usuario\n",
+        "\n",
+        "print(\"Dame datos para hacer una matriz cuadrada\") #Pide al usuario datos para las filas y columnas\n",
+        "f = int(input(\"Introduce el número de filas: \"))\n",
+        "c = int(input(\"Introduce el número de columnas: \"))\n",
+        "leer(f,c) #ejecuta la funcion"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Ejercicio 2\n",
+        "\n",
+        "def leer():\n",
+        "  matriz = []\n",
+        "  re = int(input((\"numeros de rengoles que deseas: \"))) #Pide al usuario los renglones\n",
+        "  col = int(input((\"numeros de columnas que deseas: \"))) #Pide al usuario los columnas\n",
+        "  for numeros in range(re) : #itera sobre el valor de las columnas\n",
+        "    m_mat = []\n",
+        "    for num in range(col):\n",
+        "      nim = int(input(f\"numeros de para la columna {numeros+1} y poscicion {num+1} que deseas: \"))  #pide al usuario el valor para la poscicion de la matriz\n",
+        "      m_mat.append(nim) #añade ese valor a la lista\n",
+        "    matriz.append(m_mat) #añade esa lista a la matriz\n",
+        "  print(matriz)\n",
+        "  centroMatriz(matriz)\n",
+        "\n",
+        "def centroMatriz(matriz):\n",
+        "  matriz_S = []\n",
+        "  i = 1\n",
+        "  x = 1\n",
+        "  for reng in range(len(matriz)-2): #ambos for iteran sobre los renglones y columnas excepto la ultima y primera\n",
+        "    vector = []\n",
+        "    i = 1\n",
+        "    for col in range(len(matriz[0])-2):\n",
+        "      valor_1 = matriz[x][i] #extra los valores entre bordes\n",
+        "      vector.append(valor_1) #los añade a la lista\n",
+        "      i += 1\n",
+        "    matriz_S.append(vector) #añade a la matriz\n",
+        "    x += 1\n",
+        "  print(matriz_S)\n",
+        "\n",
+        "leer()\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "z4LO_qvAZyol",
+        "outputId": "4c169223-e22c-4240-b2be-ad8a7e3e6761"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "numeros de rengoles que deseas: 1\n",
+            "numeros de columnas que deseas: 1\n",
+            "numeros de para la columna 1 y poscicion 1 que deseas: 1\n",
+            "[[1]]\n",
+            "[]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Ejercicio 3\n",
+        "def leer():\n",
+        "  re = int(input((\"numeros de rengoles que deseas: \"))) #Pide al usuario los renglones\n",
+        "  col = int(input((\"numeros de columnas que deseas: \"))) #Pide al usuario los columnas\n",
+        "  matriz = []\n",
+        "  for numeros in range(re) : #ambos for se repiten en base a los valores de renglones y columnas\n",
+        "    m_mat = []\n",
+        "    for num in range(col):\n",
+        "      nim = int(input(f\"numeros de para la columna {numeros+1} y poscicion {num+1} que deseas: \")) #pide los valores para la matriz\n",
+        "      m_mat.append(nim)\n",
+        "    matriz.append(m_mat)\n",
+        "  print(matriz)\n",
+        "  cambiaRenglones(matriz)\n",
+        "def cambiaRenglones(matriz):\n",
+        "    r1 = int(input(\"Ingrese el número del primer renglón a intercambiar: \")) #pregungta por la filas a cambiar\n",
+        "    r2 = int(input(\"Ingrese el número del segundo renglón a intercambiar: \"))\n",
+        "    r1 = r1 -1 #resta uno a los valores ya que las listas empiezan en 0\n",
+        "    r2 = r2 -1\n",
+        "    matriz[r1], matriz[r2] = matriz[r2], matriz[r1] #cambia las matrizes de lugar haciendo que se declaren en el lugar de la otra\n",
+        "    print(matriz)\n",
+        "\n",
+        "leer()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "D5wG8r_wazXD",
+        "outputId": "0d3b70c4-abd3-4be6-a755-f6e7c096b890"
+      },
+      "execution_count": 53,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "numeros de rengoles que deseas: 3\n",
+            "numeros de columnas que deseas: 3\n",
+            "numeros de para la columna 1 y poscicion 1 que deseas: 1\n",
+            "numeros de para la columna 1 y poscicion 2 que deseas: 2\n",
+            "numeros de para la columna 1 y poscicion 3 que deseas: 3\n",
+            "numeros de para la columna 2 y poscicion 1 que deseas: 4\n",
+            "numeros de para la columna 2 y poscicion 2 que deseas: 5\n",
+            "numeros de para la columna 2 y poscicion 3 que deseas: 6\n",
+            "numeros de para la columna 3 y poscicion 1 que deseas: 7\n",
+            "numeros de para la columna 3 y poscicion 2 que deseas: 8\n",
+            "numeros de para la columna 3 y poscicion 3 que deseas: 9\n",
+            "[[1, 2, 3], [4, 5, 6], [7, 8, 9]]\n",
+            "Ingrese el número del primer renglón a intercambiar: 1\n",
+            "Ingrese el número del segundo renglón a intercambiar: 3\n",
+            "[[7, 8, 9], [4, 5, 6], [1, 2, 3]]\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
